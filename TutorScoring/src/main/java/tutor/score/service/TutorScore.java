@@ -19,6 +19,11 @@ public class TutorScore {
         return tutor;
     }
 
+    /**
+     * get the list of all kind of tutoring experience a tutor has.
+     * @param ansSelections
+     * @return
+     */
     public List<Integer> scoreForKindOfTutoring(List<TutoringType> ansSelections){
         List<Integer> multipleSelectedAns = new ArrayList<>();
         for (TutoringType selection : ansSelections){
@@ -34,6 +39,11 @@ public class TutorScore {
         return multipleSelectedAns;
     }
 
+    /**
+     * get the total tutoring experience of a tutor.
+     * @param selectedAns
+     * @return
+     */
     public int scoreForTotalTutoringExperience(TutoringExperience selectedAns) {
         if (selectedAns.equals(TutoringExperience.YEARS_0TO1))
             return TutoringExperience.YEARS_0TO1.getScore();
@@ -46,6 +56,13 @@ public class TutorScore {
         return TutoringExperience.NONE.getScore();
     }
 
+    /**
+     * do a sum of all selected kind of tutoring score.
+     * calculate the total score by adding the tutoring type core and total tutoring experience.
+     * @param multiSelectedAns
+     * @param singleSelectionAns
+     * @return
+     */
     public int calculateTotalScore(List<TutoringType> multiSelectedAns, TutoringExperience singleSelectionAns){
         int multiChoiceQueScore = scoreForKindOfTutoring(multiSelectedAns).stream()
                 .mapToInt(Integer::intValue).sum();
